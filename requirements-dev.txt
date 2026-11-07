@@ -1,0 +1,4 @@
+-r requirements.txt
+capstone==5.0.9
+numpy
+UnityPy==1.25.4

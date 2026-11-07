@@ -1,0 +1,99 @@
+[
+ {
+  "kind": "serialized",
+  "path": "sharedassets0.assets",
+  "patch": "sharedassets0.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_fd3s_91_*.bundle",
+  "patch": "fd3s_91.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_fer_360_00_spyder_*.bundle",
+  "patch": "fer360_spyder.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschen_gem_91_*.bundle",
+  "patch": "korschen_gem_91.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschen_koe_91_*.bundle",
+  "patch": "korschen_koe_91.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschen_str_91_*.bundle",
+  "patch": "korschen_str_91.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschen_turbo_91_*.bundle",
+  "patch": "korschen_turbo_91.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschenk6_fla_89_93_*.bundle",
+  "patch": "k6_fla.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschenk6_gem_89_93_*.bundle",
+  "patch": "k6_gem_89.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschenk6_narrow_89_93_*.bundle",
+  "patch": "k6_narrow.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschenk6_narrow_cabrio_89_93_*.bundle",
+  "patch": "k6_narrow_cabrio.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschenk6_sla_89_93_*.bundle",
+  "patch": "k6_sla.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschenk6_wide_89_93_*.bundle",
+  "patch": "k6_wide.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschenk6_wide_cabrio_89_93_*.bundle",
+  "patch": "k6_wide_cabrio.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_z33_02_*.bundle",
+  "patch": "z33.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "customization_fd3s_91_02_assets_all_0833763531bae4590061df7cae21bde0.bundle",
+  "patch": "custom_fd3s.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "customization_korschen_89-94_assets_all_e1ab3c22e55e5e81df1036e9f92289a9.bundle",
+  "patch": "custom_korschen.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "customization_sannissykina_93-98_assets_all_d791292fb9afba67f8cd95d0731bd4c1.bundle",
+  "patch": "custom_sykina.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_sykina_89_sedansunroofzenki_*.bundle",
+  "target_glob": "catalog_carorigins_assets_carorigin_bmw_e36_m3_92_*.bundle",
+  "target": "catalog_carorigins_assets_carorigin_bmw_e36_m3_92_677070ff253ff1a72eb56ad122893370.bundle",
+  "patch": "bmw_e36_m3.nrd"
+ }
+]

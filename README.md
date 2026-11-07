@@ -172,9 +172,6 @@ The forced-induction entries in the Mods hub and in the engine-swap browser open
 
 - **3.2.7 has not been played.** The port is checked offline only.
 - **Not yet confirmed in game on 3.2.8:**
-  - the GEM '89 fix
-  - buying and driving the E36 M3
-  - the VQ35DE sound
   - the supercharger's feel and sound
 - **BMW E36 M3.**
   - The paint colour is fixed, and exterior parts changed in the garage are not visible on it.

@@ -30,6 +30,18 @@ def resource_root():
     return Path(__file__).resolve().parents[1]
 
 
+def long_path(path):
+    path = Path(os.path.abspath(path))
+    if os.name != 'nt':
+        return path
+    s = str(path)
+    if s.startswith('\\\\?\\'):
+        return path
+    if s.startswith('\\\\'):
+        return Path('\\\\?\\UNC\\' + s[2:])
+    return Path('\\\\?\\' + s)
+
+
 def sha256(path):
     h = hashlib.sha256()
     with open(path, 'rb') as f:
@@ -44,7 +56,8 @@ class PatchError(Exception):
 
 class Patcher:
     def __init__(self, game, log=print):
-        self.game = Path(game)
+        self.shown = Path(game)
+        self.game = long_path(game)
         self.log = log
         self.patches = resource_root() / 'patches'
         self.plan = json.loads((self.patches / 'assets.json').read_text(encoding='utf-8'))
@@ -56,7 +69,7 @@ class Patcher:
         exe = self.path('NIGHT-RUNNERS PRIVATE ALPHA.exe')
         dll = self.path('GameAssembly.dll')
         if not exe.exists() or not dll.exists() or not self.path(DATA).is_dir():
-            raise PatchError('%s does not look like a NIGHT-RUNNERS PRIVATE ALPHA folder' % self.game)
+            raise PatchError('%s does not look like a NIGHT-RUNNERS PRIVATE ALPHA folder' % self.shown)
 
     def state(self):
         p = self.path(BACKUP) / STATE

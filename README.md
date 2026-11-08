@@ -36,6 +36,8 @@ On 3.2.8 the output is identical to the REDUX development install. `GameAssembly
 
 Before writing anything, the patcher copies every file it changes into `_redux_backup` inside the game folder. **Restore stock** puts those files back and deletes the files REDUX added.
 
+The game folder can be anywhere, including deep paths such as the per-user itch folder (`C:\Users\<name>\AppData\Roaming\itch\apps\...`). The patcher uses extended-length paths, so backup paths over the Windows 260-character limit work even when Windows long-path support is off. Patcher 1.0.0 failed there with `[WinError 3] The system cannot find the path specified` right after the BMW E36 M3 step, without changing any game file. To recover, delete the leftover `_redux_backup` folder and run 1.0.1 or later.
+
 The same actions are available from the command line:
 
 ```bash

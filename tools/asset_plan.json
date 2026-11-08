@@ -16,6 +16,16 @@
  },
  {
   "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_fer_360_99_*.bundle",
+  "patch": "fer360_99.nrd"
+ },
+ {
+  "kind": "bundle",
+  "source": "catalog_carorigins_assets_carorigin_korschen_carrera_89_*.bundle",
+  "patch": "korschen_carrera_89.nrd"
+ },
+ {
+  "kind": "bundle",
   "source": "catalog_carorigins_assets_carorigin_korschen_gem_91_*.bundle",
   "patch": "korschen_gem_91.nrd"
  },

@@ -148,7 +148,8 @@ The forced-induction entries in the Mods hub and in the engine-swap browser open
   - Its six mirrors and the GEMBALLA doors got their 14 missing door references.
 - **Silent or misplaced engine audio.** `EngineSoundAnchor` is moved onto the engine for these cars:
   - Korschen Turbo '91, KOE '91, STR '91 and GEM '91
-  - Ferrari 360 Spyder
+  - Korschen Carrera '89
+  - Ferrari 360 Spyder and 360 Coupe
 - **K6 TURBO GEM '91.** The rear track is 50 mm wider per side.
 - **Honda NSX.** An unresolved interior asset key (`1cee9cdb…`) is redirected to the working one (`72e82596…`).
 
@@ -161,7 +162,7 @@ The forced-induction entries in the Mods hub and in the engine-swap browser open
 | `…/StreamingAssets/aa/catalog.bin` | E36 M3 bundle and asset locations appended |
 | `…/StandaloneWindows64/catalog_carorigins_assets_carorigin_bmw_e36_m3_92_….bundle` | New file |
 | `…carorigin_korschenk6_{fla,narrow,narrow_cabrio,sla,wide,wide_cabrio,gem}_89_93_….bundle` | K6 interior and engine donors |
-| `…carorigin_korschen_{turbo,koe,str,gem}_91_….bundle`, `…carorigin_fer_360_00_spyder_….bundle` | Engine sound anchor; GEM '91 rear track |
+| `…carorigin_korschen_{turbo,koe,str,gem}_91_….bundle`, `…carorigin_korschen_carrera_89_….bundle`, `…carorigin_fer_360_{00_spyder,99}_….bundle` | Engine sound anchor; GEM '91 rear track |
 | `…carorigin_z33_02_….bundle` | VQ35DE definition and sound |
 | `…carorigin_fd3s_91_….bundle` | RX-7 shell lip and greenhouse |
 | `…customization_fd3s_91_02_assets_all_0833….bundle` | RX-7 bodykits, Fortune fixes, cabin top |

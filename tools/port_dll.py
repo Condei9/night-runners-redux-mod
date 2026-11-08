@@ -268,11 +268,19 @@ def port(clean8, modded8, clean7, spec8, meta8, meta7):
     for site in spec8['sites']:
         s = int(site['rva'], 16)
         n = len(site['new']) // 2
-        for i in cs.disasm(m.read(s, n + 16), s):
+        fs, fe, _ = mp.func(mp.fa, s)
+        if site_is_jump_table(a, mp, s, n):
+            s0 = s - s % 4
+            e0 = (s + n + 3) & ~3
+            entries.update(v for v in struct.unpack('<%dI' % ((e0 - s0) // 4), m.read(s0, e0 - s0)) if ours(v))
+            continue
+        bounds = [i.address for i in disasm(a, fs, max(fe, s + n + 16))]
+        s0 = max([x for x in bounds if x <= s] or [s])
+        for i in cs.disasm(m.read(s0, s + n + 16 - s0), s0):
             if i.address >= s + n:
                 break
             r = ref(i)
-            if r and ours(r[0]):
+            if r and ours(r[0]) and (i.group(capstone.CS_GRP_JUMP) or i.group(capstone.CS_GRP_CALL)):
                 entries.add(r[0])
     seen = set()
     todo = sorted(entries | {x for x, _ in code_ranges})
@@ -356,8 +364,7 @@ def port(clean8, modded8, clean7, spec8, meta8, meta7):
         s = int(site['rva'], 16)
         n = len(site['new']) // 2
         fs, fe, _ = mp.func(mp.fa, s)
-        jump_table = n >= 4 and all(fs <= v <= fe + 0x1000 for v in struct.unpack_from('<%dI' % ((n + (s % 4)) // 4), a.read(s - s % 4, (n + (s % 4)) // 4 * 4)))
-        if jump_table:
+        if site_is_jump_table(a, mp, s, n):
             s0 = s - s % 4
             e0 = (s + n + 3) & ~3
             old = a.read(s0, e0 - s0)
@@ -396,8 +403,13 @@ def port(clean8, modded8, clean7, spec8, meta8, meta7):
         size = 0
         content = patched.read(r8, int(sec['rsize'], 16))
         gt = a.exception_table()
+        pad = len(gt) - len(b.exception_table())
+        if pad < 0:
+            raise ValueError('3.2.7 exception table is larger than 3.2.8')
         for seg in sec['segments']:
             if seg[0] == 'game_exceptions':
+                if pad:
+                    segs.append(['bytes', pack_bytes(bytes(pad))])
                 extra = unpack_bytes(seg[1]) if len(seg) > 1 else b''
                 new = list(seg)
                 new[1] = pack_bytes(content[pos + len(gt):pos + len(gt) + len(extra)])
@@ -412,6 +424,11 @@ def port(clean8, modded8, clean7, spec8, meta8, meta7):
     out = apply(clean7, spec7)
     spec7['result_sha256'] = hashlib.sha256(out).hexdigest()
     return spec7, out, len(insns), mp
+
+
+def site_is_jump_table(a, mp, s, n):
+    fs, fe, _ = mp.func(mp.fa, s)
+    return n >= 4 and all(fs <= v <= fe + 0x1000 for v in struct.unpack_from('<%dI' % ((n + (s % 4)) // 4), a.read(s - s % 4, (n + (s % 4)) // 4 * 4)))
 
 
 def target_game(mp, ours, shift):

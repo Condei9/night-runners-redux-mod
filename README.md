@@ -170,7 +170,7 @@ The forced-induction entries in the Mods hub and in the engine-swap browser open
 
 ## Known limitations
 
-- **3.2.7 has not been played.** The port is checked offline only.
+- **3.2.7 is checked offline only.** The first 3.2.7 release crashed on the auction house and in engine swaps. The port left some REDUX code unrelocated, and it placed code that follows the game's exception table 0x3C bytes early, because the 3.2.7 table is shorter. Both are fixed, and every reference from REDUX code into the game has been checked against 3.2.7, but the fixed build has not been played yet.
 - **Not yet confirmed in game on 3.2.8:**
   - the supercharger's feel and sound
 - **BMW E36 M3.**
@@ -222,7 +222,7 @@ The tools in `tools/` need `requirements-dev.txt`. They take a stock game folder
 | Tool | Purpose |
 |---|---|
 | `tools/make_dll_spec.py <stock dll> <modded dll> <out json>` | Builds a DLL spec from a stock/modded pair, and checks that applying it reproduces the modded DLL byte for byte. |
-| `tools/port_dll.py <stock 3.2.8 dll> <modded 3.2.8 dll> <stock 3.2.7 dll> <3.2.8 spec> <out spec> <3.2.8 metadata> <3.2.7 metadata> [out dll]` | Ports the 3.2.8 spec to 3.2.7. Functions are matched by masked machine code, with IL2CPP metadata names as a fallback. Every patch site, call, RIP-relative and image-relative reference, jump table and chained unwind record in the REDUX code is remapped, and each site's original bytes are checked in the 3.2.7 DLL. |
+| `tools/port_dll.py <stock 3.2.8 dll> <modded 3.2.8 dll> <stock 3.2.7 dll> <3.2.8 spec> <out spec> <3.2.8 metadata> <3.2.7 metadata> [out dll]` | Ports the 3.2.8 spec to 3.2.7. Functions are matched by masked machine code, with IL2CPP metadata names as a fallback. Every patch site, call, RIP-relative and image-relative reference, jump table and chained unwind record in the REDUX code is remapped, and each site's original bytes are checked in the 3.2.7 DLL. Entry points are read from whole instructions at each site and from jump-table values. Each copy of the game's exception table is preceded by zero padding equal to the difference in table size, so the REDUX code after it keeps the same layout as on 3.2.8. |
 | `tools/methodmap.py` | IL2CPP method-to-RVA map used by `port_dll.py`. |
 | `tools/make_asset_patches.py <stock game> <modded game> <out dir> tools/asset_plan.json` | Builds the `.nrd` asset deltas, and checks that each one rebuilds the modded file's objects exactly. |
 | `tools/verify.py <stock 3.2.7> <stock 3.2.8> <patched 3.2.7> <patched 3.2.8> <reference>` | Compares patched 3.2.8 against the reference install. Then it checks that patched 3.2.7 differs from patched 3.2.8 only by 3.2.7's own path IDs and preload order. |
